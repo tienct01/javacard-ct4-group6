@@ -1,0 +1,2550 @@
+// converted by version 1.3
+// on Wed Jun 28 21:16:36 ICT 2023
+
+.package auth {
+	.aid 0x11:0x22:0x33:0x44:0x55:0x88:0x0:0x0;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.3;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x9 1.0;		//javacardx/apdu
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.3;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.3;		//javacard/security
+	}
+
+	.applet {
+		0x11:0x22:0x33:0x44:0x55:0x88:0x0 pin;
+		0x11:0x22:0x33:0x44:0x55:0x88:0x1 information;
+		0x11:0x22:0x33:0x44:0x55:0x88:0x2 cinema;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] cinema/pinAID;
+		// 1
+		instanceFieldRef 3.1 cinema/aesCipher;
+		// 2
+		instanceFieldRef 4.20 cinema/aesKey;
+		// 3
+		instanceFieldRef boolean information/khoitao;
+		// 4
+		instanceFieldRef byte[] information/pinAID;
+		// 5
+		instanceFieldRef 3.1 information/aesCipher;
+		// 6
+		instanceFieldRef 4.20 information/aesKey;
+		// 7
+		instanceFieldRef byte[] pin/infoAID;
+		// 8
+		instanceFieldRef byte[] pin/marketAID;
+		// 9
+		instanceFieldRef 4.11 pin/mDig;
+		// 10
+		instanceFieldRef byte[] pin/keyAES;
+		// 11
+		instanceFieldRef short pin/sigLen;
+		// 12
+		instanceFieldRef byte[] pin/sig_buffer;
+		// 13
+		instanceFieldRef 4.15 pin/rsaSig;
+		// 14
+		instanceFieldRef 4.8 pin/rsaPrivKey;
+		// 15
+		instanceFieldRef 4.9 pin/rsaPubKey;
+		// 16
+		staticMethodRef cinema/encrypt([BS)V;
+		// 17
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 18
+		classRef 0.2;		// java/lang/Exception
+		// 19
+		staticMethodRef 1.8.11([BSB)Ljavacard/framework/AID;;		// javacard/framework/JCSystem.lookupAID([BSB)Ljavacard/framework/AID;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 20
+		staticMethodRef 1.8.4(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;		// javacard/framework/JCSystem.getAppletShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+
+		// 21
+		classRef PinInterface;
+		// 22
+		virtualMethodRef 1.3.3()Z;		// selectingApplet()Z
+		// 23
+		virtualMethodRef 1.10.1()[B;		// getBuffer()[B
+		// 24
+		virtualMethodRef 1.10.7()S;		// setOutgoing()S
+		// 25
+		staticMethodRef cinema/decrypt([BS)V;
+		// 26
+		virtualMethodRef 1.10.9(S)V;		// setOutgoingLength(S)V
+		// 27
+		virtualMethodRef 1.10.5([BSS)V;		// sendBytesLong([BSS)V
+		// 28
+		staticMethodRef cinema/naptien(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 29
+		staticMethodRef cinema/thanhtoan(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 30
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 31
+		virtualMethodRef 1.10.6()S;		// setIncomingAndReceive()S
+		// 32
+		virtualMethodRef 1.10.16()S;		// getOffsetCdata()S
+		// 33
+		staticMethodRef 1.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 34
+		staticMethodRef 1.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 35
+		staticMethodRef 1.8.0()V;		// javacard/framework/JCSystem.abortTransaction()V
+		// 36
+		virtualMethodRef 3.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	4.0;
+
+		// 37
+		virtualMethodRef 3.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 38
+		staticMethodRef 1.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 39
+		classRef information;
+		// 40
+		staticMethodRef information/<init>([BSB)V;
+		// 41
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 42
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 43
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 44
+		staticFieldRef byte[] cinema/bufferEn;
+		// 45
+		staticFieldRef byte[] information/buffer;
+		// 46
+		staticFieldRef byte[] information/bufferEn;
+		// 47
+		staticFieldRef byte[] information/dataDecrypted;
+		// 48
+		virtualMethodRef 1.3.1()V;		// register()V
+		// 49
+		virtualMethodRef 1.3.3()Z;		// selectingApplet()Z
+		// 50
+		staticMethodRef information/setAESKey()V;
+		// 51
+		virtualMethodRef 1.10.15()S;		// getIncomingLength()S
+		// 52
+		staticFieldRef short information/countImage;
+		// 53
+		staticFieldRef short information/countInfo;
+		// 54
+		staticMethodRef information/encrypt(S)V;
+		// 55
+		staticFieldRef byte[] information/infoEn;
+		// 56
+		staticFieldRef byte[] information/bufferImg;
+		// 57
+		virtualMethodRef 1.10.3(S)S;		// receiveBytes(S)S
+		// 58
+		staticFieldRef byte[] information/avatarEn;
+		// 59
+		staticMethodRef information/decrypt([B)V;
+		// 60
+		classRef pin;
+		// 61
+		staticMethodRef pin/<init>([BSB)V;
+		// 62
+		staticFieldRef byte[] cinema/dataDecrypted;
+		// 63
+		staticMethodRef 3.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	3.1;
+
+		// 64
+		staticMethodRef 4.11.0(BZ)Ljavacard/security/MessageDigest;;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+			.descriptor	Ljavacard/security/MessageDigest;	4.11;
+
+		// 65
+		classRef cinema;
+		// 66
+		virtualMethodRef 1.3.1()V;		// register()V
+		// 67
+		virtualMethodRef 1.3.2([BSB)V;		// register([BSB)V
+		// 68
+		classRef 1.9;		// javacard/framework/OwnerPIN
+		// 69
+		staticMethodRef 1.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 70
+		staticFieldRef 1.9 pin/pin;
+		// 71
+		staticFieldRef byte[] AUTH_CONSTANTS/DEAULT_PIN_CODE;
+		// 72
+		virtualMethodRef 1.9.8([BSB)V;		// update([BSB)V
+		// 73
+		staticMethodRef pin/hashMD5Message([B)[B;
+		// 74
+		staticMethodRef 4.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	4.0;
+
+		// 75
+		classRef 4.20;		// javacard/security/AESKey
+		// 76
+		staticMethodRef cinema/<init>([BSB)V;
+		// 77
+		staticMethodRef 4.15.0(BZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	4.15;
+
+		// 78
+		virtualMethodRef 1.3.1()V;		// register()V
+		// 79
+		classRef 4.8;		// javacard/security/RSAPrivateKey
+		// 80
+		staticMethodRef cinema/setAESKey()V;
+		// 81
+		classRef 4.9;		// javacard/security/RSAPublicKey
+		// 82
+		staticFieldRef byte[] cinema/data;
+		// 83
+		classRef 4.16;		// javacard/security/KeyPair
+		// 84
+		staticMethodRef 4.16.0(BS)V;		// javacard/security/KeyPair.<init>(BS)V
+		// 85
+		virtualMethodRef 4.16.1()V;		// genKeyPair()V
+		// 86
+		virtualMethodRef 4.16.2()Ljavacard/security/PrivateKey;;		// getPrivate()Ljavacard/security/PrivateKey;
+			.descriptor	Ljavacard/security/PrivateKey;	4.2;
+
+		// 87
+		virtualMethodRef 4.16.3()Ljavacard/security/PublicKey;;		// getPublic()Ljavacard/security/PublicKey;
+			.descriptor	Ljavacard/security/PublicKey;	4.3;
+
+		// 88
+		virtualMethodRef 1.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 89
+		virtualMethodRef 4.15.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	4.0;
+
+		// 90
+		virtualMethodRef 4.15.5([BSS[BS)S;		// sign([BSS[BS)S
+		// 91
+		virtualMethodRef 1.9.5()V;		// reset()V
+		// 92
+		virtualMethodRef 1.3.3()Z;		// selectingApplet()Z
+		// 93
+		staticMethodRef pin/updatePIN(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 94
+		staticMethodRef pin/verify(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 95
+		staticMethodRef pin/unblock()V;
+		// 96
+		staticMethodRef pin/exportPublicModulus(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 97
+		staticMethodRef pin/exportPublicExponent(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 98
+		staticMethodRef pin/signData(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 99
+		virtualMethodRef 1.9.1([BSB)Z;		// check([BSB)Z
+		// 100
+		classRef InfoInterface;
+		// 101
+		classRef CinemaInterface;
+		// 102
+		virtualMethodRef 1.9.2()B;		// getTriesRemaining()B
+		// 103
+		virtualMethodRef 1.9.4()Z;		// isValidated()Z
+		// 104
+		virtualMethodRef 1.9.6()V;		// resetAndUnblock()V
+		// 105
+		virtualMethodRef 4.11.4()V;		// reset()V
+		// 106
+		virtualMethodRef 4.11.1([BSS[BS)S;		// doFinal([BSS[BS)S
+	}
+
+	.interface public abstract CINEMA_CONSTANTS 3 {
+
+		.fields {
+			public static final byte INS_SHOW = 0;		// B
+			public static final byte INS_NAPTIEN = 1;		// B
+			public static final byte INS_THANHTOAN = 2;		// B
+			public static final short SW_LACK_MONEY = 26265;		// S
+			public static final byte PARAMETER_INTERFACE = 17;		// B
+		}
+
+	}
+
+	.interface public abstract CinemaInterface 0 {
+
+		.shareable;
+
+		.superInterfaces {
+			1.2;		// javacard/framework/Shareable
+		}
+
+		.method public abstract changeInfoMarketEncode([B)V 0 {
+		}
+
+	}
+
+	.interface public abstract INFO_CONSTANTS 4 {
+
+		.fields {
+			public static final short COUNT_ID = 0;		// S
+			public static final short COUNT_HOTEN = 1;		// S
+			public static final short COUNT_NGAYSINH = 2;		// S
+			public static final short COUNT_GIOITINH = 3;		// S
+			public static final short COUNT_SDT = 4;		// S
+			public static final short COUNT_CMND = 5;		// S
+			public static final short COUNT_DIACHI = 6;		// S
+			public static final short COUNT_AVATAR = 7;		// S
+			public static final short GET_ID = 0;		// S
+			public static final short GET_HOTEN = 1;		// S
+			public static final short GET_NGAYSINH = 2;		// S
+			public static final short GET_GIOITINH = 3;		// S
+			public static final short GET_SDT = 4;		// S
+			public static final short GET_CMND = 5;		// S
+			public static final short GET_DIACHI = 6;		// S
+			public static final byte INS_INSERT = 1;		// B
+			public static final byte INS_THONGTIN = 2;		// B
+			public static final byte INS_CHANGE_INFO = 3;		// B
+			public static final byte INS_CHANGE_IMAGE = 4;		// B
+			public static final short KEY_AES_LENGTH = 16;		// S
+			public static final byte PARAMETER_INTERFACE = 17;		// B
+		}
+
+	}
+
+	.interface public abstract InfoInterface 1 {
+
+		.shareable;
+
+		.superInterfaces {
+			1.2;		// javacard/framework/Shareable
+		}
+
+		.method public abstract changeInfoEncode([B[B)V 0 {
+		}
+
+	}
+
+	.interface public abstract PinInterface 2 {
+
+		.shareable;
+
+		.superInterfaces {
+			1.2;		// javacard/framework/Shareable
+		}
+
+		.method public abstract getHashPin()[B 0 {
+		}
+
+		.method public abstract initChuky()V 1 {
+		}
+
+	}
+
+	.class public AUTH_CONSTANTS 5 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			static final byte AUTH = 99;		// B
+			static final byte[] DEAULT_PIN_CODE = {1,2,3,4,5,6};		// [B
+			static final byte PIN_TRY_LIMIT = 5;		// B
+			static final byte PIN_SIZE = 6;		// B
+			static final short SW_VERIFICATION_FAILED = 26129;		// S
+			static final short SW_PIN_VERIFICATION_REQUIRED = 25362;		// S
+			static final short SW_WRONG_PIN_LEN = 26131;		// S
+			static final short SW_OVER_TRY_TIMES = 26132;		// S
+			static final byte PARAMETER_INTERFACE = 18;		// B
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 42;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public APPLET_CONSTANTS 6 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final byte CLA = -80;		// B
+			public static final byte SELECT = 4;		// B
+			public static final byte CREATE = 16;		// B
+			public static final byte UPDATE = 17;		// B
+			public static final byte READ = 19;		// B
+			public static final byte DELETE = 20;		// B
+			public static final byte UNBLOCK = 21;		// B
+			public static final byte VERIFY = 22;		// B
+			public static final byte CLEAR = 23;		// B
+			public static final byte INIT_CARD = -103;		// B
+			public static final byte EXPORT_PUBK_MODU = 24;		// B
+			public static final byte EXPORT_PUBK_EXPO = 25;		// B
+			public static final byte SIGN_DATA = 32;		// B
+			public static final short KEY_SIZE = 16;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 42;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public cinema 7 extends 1.3 {		// extends javacard/framework/Applet
+
+		.shareable;
+
+		.fields {
+			private 3.1 aesCipher 0;		// Ljavacardx/crypto/Cipher;
+			private 4.20 aesKey 1;		// Ljavacard/security/AESKey;
+			private final byte[] pinAID 2;		// [B
+			private static byte[] data = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};		// [B
+			private static byte[] dataDecrypted;		// [B
+			private static byte[] bufferEn;		// [B
+		}
+
+		.publicMethodTable 5 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+			changeInfoMarketEncode([B)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface CINEMA_CONSTANTS { 
+			}
+
+			.interface 2.0 { 		// javacardx/apdu/ExtendedLength
+			}
+
+			.interface 1.2 { 		// javacard/framework/Shareable
+			}
+
+			.interface CinemaInterface { 
+				8;		// changeInfoMarketEncode([B)V
+			}
+
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 6;
+			.locals 0;
+
+				L0:	new 65;		// auth/cinema
+					dup;
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokespecial 76;		// auth/cinema.<init>([BSB)V
+					pop;
+					return;
+		}
+
+		.method private <init>([BSB)V {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 41;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 17;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 34;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 51;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 68;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 85;
+					bastore;
+					dup;
+					sconst_5;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 6;
+					sconst_0;
+					bastore;
+					putfield_a 0;		// reference auth/cinema.pinAID
+					sspush 256;
+					sconst_2;
+					invokestatic 43;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 44;		// reference auth/cinema.bufferEn
+					sspush 256;
+					sconst_2;
+					invokestatic 43;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 62;		// reference auth/cinema.dataDecrypted
+					aload_0;
+					bspush 13;
+					sconst_0;
+					invokestatic 63;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 1;		// reference auth/cinema.aesCipher
+					aload_0;
+					bspush 15;
+					sspush 128;
+					sconst_0;
+					invokestatic 74;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 75;		// T_CLASSORINTERFACE javacard/security/AESKey
+					putfield_a 2;		// reference auth/cinema.aesKey
+					aload_0;
+					invokevirtual 78;		// register()V
+					aload_0;
+					invokespecial 80;		// auth/cinema.setAESKey()V
+					aload_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					invokespecial 16;		// auth/cinema.encrypt([BS)V
+					getstatic_a 44;		// reference auth/cinema.bufferEn
+					sconst_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					sspush 256;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method private setAESKey()V {
+			.stack 3;
+			.locals 4;
+
+				L0:	getfield_a_this 0;		// reference auth/cinema.pinAID
+					sconst_0;
+					getfield_a_this 0;		// reference auth/cinema.pinAID
+					arraylength;
+					s2b;
+					invokestatic 19;		// javacard/framework/JCSystem.lookupAID([BSB)Ljavacard/framework/AID;
+					astore_1;
+				L1:	aload_1;
+					bspush 18;
+					invokestatic 20;		// javacard/framework/JCSystem.getAppletShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+					checkcast 0 21;		// T_CLASSORINTERFACE auth/PinInterface
+					checkcast 0 21;		// T_CLASSORINTERFACE auth/PinInterface
+					astore_2;
+				L2:	aload_2;
+					invokeinterface 1 21 0;		// auth/PinInterface
+					astore_3;
+				L3:	getfield_a_this 2;		// reference auth/cinema.aesKey
+					aload_3;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+				L4:	goto L6;
+				L5:	astore 4;
+				L6:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L3 L4 L5 18;
+			}
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 4;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 22;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_0;
+					invokespecial 80;		// auth/cinema.setAESKey()V
+					aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_1;
+					baload;
+					stableswitch L16 0 2 L4 L14 L15;
+				L4:	aload_1;
+					invokevirtual 24;		// setOutgoing()S
+					sstore_3;
+				L5:	sconst_0;
+					sstore 4;
+				L6:	aload_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					invokespecial 25;		// auth/cinema.decrypt([BS)V
+					aload_1;
+					sspush 256;
+					invokevirtual 26;		// setOutgoingLength(S)V
+					sspush 256;
+					sstore 5;
+				L7:	sconst_0;
+					sstore 6;
+				L8:	sconst_0;
+					sstore 7;
+				L9:	sload 5;
+					ifle L17;
+				L10:	sload 5;
+					sload_3;
+					if_scmple L12;
+				L11:	sload_3;
+					goto L13;
+				L12:	sload 5;
+				L13:	sstore 7;
+					aload_1;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 6;
+					sload 7;
+					invokevirtual 27;		// sendBytesLong([BSS)V
+					sload 5;
+					sload 7;
+					ssub;
+					sstore 5;
+					sload 6;
+					sload 7;
+					sadd;
+					sstore 6;
+					goto L9;
+				L14:	aload_0;
+					aload_1;
+					invokespecial 28;		// auth/cinema.naptien(Ljavacard/framework/APDU;)V
+					goto L17;
+				L15:	aload_0;
+					aload_1;
+					invokespecial 29;		// auth/cinema.thanhtoan(Ljavacard/framework/APDU;)V
+					goto L17;
+				L16:	sspush 27904;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	return;
+		}
+
+		.method private naptien(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// setIncomingAndReceive()S
+					s2b;
+					sstore_2;
+				L1:	aload_1;
+					invokevirtual 32;		// getOffsetCdata()S
+					sstore_3;
+				L2:	sconst_0;
+					sstore 4;
+				L3:	sload_2;
+					bspush 12;
+					if_scmpge L5;
+				L4:	sspush 28416;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	aload_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					invokespecial 25;		// auth/cinema.decrypt([BS)V
+					aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore 5;
+				L6:	invokestatic 33;		// javacard/framework/JCSystem.beginTransaction()V
+					sconst_0;
+					sstore 6;
+				L7:	sconst_0;
+					sstore 7;
+				L8:	bspush 11;
+					sstore 4;
+				L9:	sload 4;
+					iflt L14;
+				L10:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					baload;
+					aload 5;
+					sload_3;
+					sload 4;
+					sadd;
+					baload;
+					sadd;
+					sload 6;
+					sadd;
+					s2b;
+					sstore 7;
+					sload 7;
+					bspush 10;
+					if_scmplt L12;
+				L11:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bspush 10;
+					ssub;
+					s2b;
+					bastore;
+					sconst_1;
+					sstore 6;
+					goto L13;
+				L12:	sconst_0;
+					sstore 6;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bastore;
+				L13:	sinc 4 -1;
+					goto L9;
+				L14:	aload_0;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sconst_0;
+					invokespecial 16;		// auth/cinema.encrypt([BS)V
+					getstatic_a 44;		// reference auth/cinema.bufferEn
+					sconst_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					sspush 256;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					invokestatic 34;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method private thanhtoan(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 9;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// setIncomingAndReceive()S
+					sstore_2;
+				L1:	aload_1;
+					invokevirtual 32;		// getOffsetCdata()S
+					sstore_3;
+				L2:	sconst_0;
+					sstore 4;
+				L3:	aload_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					invokespecial 25;		// auth/cinema.decrypt([BS)V
+					aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore 5;
+				L4:	invokestatic 33;		// javacard/framework/JCSystem.beginTransaction()V
+					sconst_0;
+					sstore 6;
+				L5:	sconst_0;
+					sstore 7;
+				L6:	bspush 11;
+					sstore 4;
+				L7:	sload 4;
+					iflt L12;
+				L8:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					baload;
+					aload 5;
+					sload_3;
+					sload 4;
+					sadd;
+					baload;
+					ssub;
+					sload 6;
+					ssub;
+					s2b;
+					sstore 7;
+					sload 7;
+					ifge L10;
+				L9:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					bspush 10;
+					sload 7;
+					sadd;
+					s2b;
+					bastore;
+					sconst_1;
+					sstore 6;
+					goto L11;
+				L10:	sconst_0;
+					sstore 6;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bastore;
+				L11:	sinc 4 -1;
+					goto L7;
+				L12:	sload 6;
+					sconst_1;
+					if_scmpne L14;
+				L13:	invokestatic 35;		// javacard/framework/JCSystem.abortTransaction()V
+					sspush 26265;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	sconst_0;
+					sstore 6;
+					bspush 23;
+					sstore 4;
+				L15:	sload 4;
+					bspush 12;
+					if_scmplt L20;
+				L16:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					baload;
+					aload 5;
+					sload_3;
+					sload 4;
+					sadd;
+					bspush 12;
+					ssub;
+					baload;
+					sadd;
+					sload 6;
+					sadd;
+					s2b;
+					sstore 7;
+					sload 7;
+					bspush 10;
+					if_scmplt L18;
+				L17:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bspush 10;
+					ssub;
+					s2b;
+					bastore;
+					sconst_1;
+					sstore 6;
+					goto L19;
+				L18:	sconst_0;
+					sstore 6;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bastore;
+				L19:	sinc 4 -1;
+					goto L15;
+				L20:	sconst_0;
+					sstore 6;
+					bspush 31;
+					sstore 4;
+				L21:	sload 4;
+					bspush 24;
+					if_scmplt L26;
+				L22:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					baload;
+					aload 5;
+					sload_3;
+					sload 4;
+					sadd;
+					bspush 12;
+					ssub;
+					baload;
+					sadd;
+					sload 6;
+					sadd;
+					s2b;
+					sstore 7;
+					sload 7;
+					bspush 10;
+					if_scmplt L24;
+				L23:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bspush 10;
+					ssub;
+					s2b;
+					bastore;
+					sconst_1;
+					sstore 6;
+					goto L25;
+				L24:	sconst_0;
+					sstore 6;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bastore;
+				L25:	sinc 4 -1;
+					goto L21;
+				L26:	sconst_0;
+					sstore 6;
+					bspush 31;
+					sstore 4;
+				L27:	sload 4;
+					bspush 24;
+					if_scmplt L32;
+				L28:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					baload;
+					aload 5;
+					sload_3;
+					sload 4;
+					sadd;
+					sconst_4;
+					ssub;
+					baload;
+					ssub;
+					sload 6;
+					ssub;
+					s2b;
+					sstore 7;
+					sload 7;
+					ifge L30;
+				L29:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					bspush 10;
+					sload 7;
+					sadd;
+					s2b;
+					bastore;
+					sconst_1;
+					sstore 6;
+					goto L31;
+				L30:	sconst_0;
+					sstore 6;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sload 7;
+					bastore;
+				L31:	sinc 4 -1;
+					goto L27;
+				L32:	sconst_0;
+					sstore 8;
+				L33:	bspush 32;
+					sstore 9;
+				L34:	sload_2;
+					bspush 29;
+					if_scmplt L40;
+				L35:	sinc 2 -8;
+					sload 9;
+					sstore 4;
+				L36:	sload 4;
+					sspush 255;
+					if_scmpgt L34;
+				L37:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					baload;
+					ifne L39;
+				L38:	aload 5;
+					sload_3;
+					bspush 29;
+					sadd;
+					bspush 8;
+					sload 8;
+					smul;
+					sadd;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					bspush 8;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload 4;
+					sstore 9;
+					sinc 8 1;
+					goto L34;
+				L39:	sinc 4 8;
+					goto L36;
+				L40:	aload 5;
+					sload_3;
+					bspush 28;
+					sadd;
+					baload;
+					sstore 10;
+				L41:	sload 10;
+					bspush 28;
+					if_scmpge L45;
+				L42:	bspush 32;
+					bspush 8;
+					sload 10;
+					smul;
+					sadd;
+					sstore 4;
+				L43:	sload 4;
+					bspush 32;
+					bspush 8;
+					sload 10;
+					smul;
+					sadd;
+					bspush 8;
+					sadd;
+					if_scmpge L45;
+				L44:	getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sload 4;
+					sconst_0;
+					bastore;
+					sinc 4 1;
+					goto L43;
+				L45:	aload_0;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sconst_0;
+					invokespecial 16;		// auth/cinema.encrypt([BS)V
+					getstatic_a 44;		// reference auth/cinema.bufferEn
+					sconst_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					sspush 256;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					invokestatic 34;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method private encrypt([BS)V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 1;		// reference auth/cinema.aesCipher
+					getfield_a_this 2;		// reference auth/cinema.aesKey
+					sconst_2;
+					invokevirtual 36;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 1;		// reference auth/cinema.aesCipher
+					aload_1;
+					sload_2;
+					sspush 256;
+					getstatic_a 44;		// reference auth/cinema.bufferEn
+					sconst_0;
+					invokevirtual 37;		// doFinal([BSS[BS)S
+					pop;
+					return;
+		}
+
+		.method private decrypt([BS)V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 1;		// reference auth/cinema.aesCipher
+					getfield_a_this 2;		// reference auth/cinema.aesKey
+					sconst_1;
+					invokevirtual 36;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 1;		// reference auth/cinema.aesCipher
+					aload_1;
+					sload_2;
+					sspush 256;
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sconst_0;
+					invokevirtual 37;		// doFinal([BSS[BS)S
+					pop;
+					return;
+		}
+
+		.method public getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable; 5 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+
+				L0:	sload_2;
+					bspush 17;
+					if_scmpeq L2;
+				L1:	aconst_null;
+					areturn;
+				L2:	aload_0;
+					areturn;
+		}
+
+		.method public changeInfoMarketEncode([B)V 8 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					invokespecial 25;		// auth/cinema.decrypt([BS)V
+					getstatic_a 62;		// reference auth/cinema.dataDecrypted
+					sconst_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_a_this 2;		// reference auth/cinema.aesKey
+					aload_1;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+					aload_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					invokespecial 16;		// auth/cinema.encrypt([BS)V
+					getstatic_a 44;		// reference auth/cinema.bufferEn
+					sconst_0;
+					getstatic_a 82;		// reference auth/cinema.data
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+				L1:	goto L3;
+				L2:	astore_2;
+				L3:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L0 L1 L2 18;
+			}
+		}
+
+	}
+
+	.class public information 8 extends 1.3 {		// extends javacard/framework/Applet
+
+		.shareable;
+
+		.fields {
+			private 3.1 aesCipher 0;		// Ljavacardx/crypto/Cipher;
+			private 4.20 aesKey 1;		// Ljavacard/security/AESKey;
+			private final byte[] pinAID 2;		// [B
+			 boolean khoitao 3;		// Z
+			private static byte[] infoEn = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};		// [B
+			private static byte[] avatarEn = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};		// [B
+			private static byte[] buffer;		// [B
+			private static byte[] bufferImg;		// [B
+			private static byte[] bufferEn;		// [B
+			private static byte[] dataDecrypted;		// [B
+			private static short countImage;		// S
+			private static short countInfo;		// S
+		}
+
+		.publicMethodTable 5 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+			changeInfoEncode([B[B)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface INFO_CONSTANTS { 
+			}
+
+			.interface 2.0 { 		// javacardx/apdu/ExtendedLength
+			}
+
+			.interface 1.2 { 		// javacard/framework/Shareable
+			}
+
+			.interface InfoInterface { 
+				8;		// changeInfoEncode([B[B)V
+			}
+
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 39;		// auth/information
+					dup;
+					aload_0;
+					sload_1;
+					sload_2;
+					invokespecial 40;		// auth/information.<init>([BSB)V
+					pop;
+					return;
+		}
+
+		.method private <init>([BSB)V {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 41;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					sconst_0;
+					putfield_b 3;		// boolean auth/information.khoitao
+					aload_0;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 17;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 34;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 51;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 68;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 85;
+					bastore;
+					dup;
+					sconst_5;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 6;
+					sconst_0;
+					bastore;
+					putfield_a 4;		// reference auth/information.pinAID
+					aload_0;
+					bspush 13;
+					sconst_0;
+					invokestatic 63;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 5;		// reference auth/information.aesCipher
+					aload_0;
+					bspush 15;
+					sspush 128;
+					sconst_0;
+					invokestatic 74;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 75;		// T_CLASSORINTERFACE javacard/security/AESKey
+					putfield_a 6;		// reference auth/information.aesKey
+					sspush 256;
+					sconst_2;
+					invokestatic 43;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 45;		// reference auth/information.buffer
+					sspush 256;
+					sconst_2;
+					invokestatic 43;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 46;		// reference auth/information.bufferEn
+					sspush 256;
+					sconst_2;
+					invokestatic 43;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 47;		// reference auth/information.dataDecrypted
+					aload_0;
+					invokevirtual 48;		// register()V
+					return;
+		}
+
+		.method public getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable; 5 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+
+				L0:	sload_2;
+					bspush 17;
+					if_scmpeq L2;
+				L1:	aconst_null;
+					areturn;
+				L2:	aload_0;
+					areturn;
+		}
+
+		.method private setAESKey()V {
+			.stack 3;
+			.locals 4;
+
+				L0:	getfield_a_this 4;		// reference auth/information.pinAID
+					sconst_0;
+					getfield_a_this 4;		// reference auth/information.pinAID
+					arraylength;
+					s2b;
+					invokestatic 19;		// javacard/framework/JCSystem.lookupAID([BSB)Ljavacard/framework/AID;
+					astore_1;
+				L1:	aload_1;
+					bspush 18;
+					invokestatic 20;		// javacard/framework/JCSystem.getAppletShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+					checkcast 0 21;		// T_CLASSORINTERFACE auth/PinInterface
+					checkcast 0 21;		// T_CLASSORINTERFACE auth/PinInterface
+					astore_2;
+				L2:	aload_2;
+					invokeinterface 1 21 0;		// auth/PinInterface
+					astore_3;
+				L3:	getfield_a_this 6;		// reference auth/information.aesKey
+					aload_3;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+				L4:	goto L6;
+				L5:	astore 4;
+				L6:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L3 L4 L5 18;
+			}
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 5;
+			.locals 11;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 49;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_0;
+					invokespecial 50;		// auth/information.setAESKey()V
+					aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L3:	aload_1;
+					invokevirtual 31;		// setIncomingAndReceive()S
+					sstore_3;
+				L4:	aload_1;
+					invokevirtual 51;		// getIncomingLength()S
+					sstore 4;
+				L5:	aload_1;
+					invokevirtual 32;		// getOffsetCdata()S
+					sstore 7;
+				L6:	aload_2;
+					sconst_1;
+					baload;
+					stableswitch L52 1 4 L7 L32 L39 L46;
+				L7:	sconst_0;
+					sstore 6;
+				L8:	invokestatic 33;		// javacard/framework/JCSystem.beginTransaction()V
+					sconst_0;
+					putstatic_s 52;		// short auth/information.countImage
+				L9:	sload_3;
+					ifle_w L24;
+				L10:	sload 6;
+					bspush 7;
+					if_scmpge_w L22;
+				L11:	sload 7;
+					sstore 8;
+				L12:	sload 8;
+					sload 7;
+					sload_3;
+					sadd;
+					if_scmpge L17;
+				L13:	aload_2;
+					sload 8;
+					baload;
+					sconst_1;
+					if_scmpne L16;
+				L14:	sload 6;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 6;
+					sload 6;
+					bspush 7;
+					if_scmpne L16;
+				L15:	goto L17;
+				L16:	sinc 8 1;
+					goto L12;
+				L17:	sload 8;
+					sload 7;
+					ssub;
+					putstatic_s 53;		// short auth/information.countInfo
+					aload_2;
+					sload 7;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					getstatic_s 53;		// short auth/information.countInfo
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getstatic_s 53;		// short auth/information.countInfo
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 55;		// reference auth/information.infoEn
+					sconst_0;
+					sspush 256;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sinc 8 1;
+					sload 4;
+					sload 8;
+					ssub;
+					sload 7;
+					sadd;
+					sstore 9;
+				L18:	sload 9;
+					newarray 11;
+					putstatic_a 56;		// reference auth/information.bufferImg
+					sload 8;
+					sstore 10;
+				L19:	sload 10;
+					sload 7;
+					sload_3;
+					sadd;
+					if_scmpge L21;
+				L20:	getstatic_a 56;		// reference auth/information.bufferImg
+					sload 10;
+					sload 8;
+					ssub;
+					aload_2;
+					sload 10;
+					baload;
+					bastore;
+					getstatic_s 52;		// short auth/information.countImage
+					sconst_1;
+					sadd;
+					putstatic_s 52;		// short auth/information.countImage
+					sinc 10 1;
+					goto L19;
+				L21:	goto L23;
+				L22:	aload_2;
+					sload 7;
+					getstatic_a 56;		// reference auth/information.bufferImg
+					getstatic_s 52;		// short auth/information.countImage
+					sload_3;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getstatic_s 52;		// short auth/information.countImage
+					sload_3;
+					sadd;
+					putstatic_s 52;		// short auth/information.countImage
+				L23:	aload_1;
+					sload 7;
+					invokevirtual 57;		// receiveBytes(S)S
+					sstore_3;
+					goto_w L9;
+				L24:	getstatic_s 52;		// short auth/information.countImage
+					sstore 5;
+				L25:	sload 5;
+					sspush 256;
+					if_scmple L27;
+				L26:	getstatic_a 56;		// reference auth/information.bufferImg
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sspush 256;
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 5;
+					sspush 256;
+					ssub;
+					sstore 5;
+					goto L25;
+				L27:	getstatic_a 56;		// reference auth/information.bufferImg
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sload 5;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sload 5;
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_b_this 3;		// boolean auth/information.khoitao
+					ifne L31;
+				L28:	getfield_a_this 4;		// reference auth/information.pinAID
+					sconst_0;
+					getfield_a_this 4;		// reference auth/information.pinAID
+					arraylength;
+					s2b;
+					invokestatic 19;		// javacard/framework/JCSystem.lookupAID([BSB)Ljavacard/framework/AID;
+					astore 8;
+				L29:	aload 8;
+					bspush 18;
+					invokestatic 20;		// javacard/framework/JCSystem.getAppletShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+					checkcast 0 21;		// T_CLASSORINTERFACE auth/PinInterface
+					checkcast 0 21;		// T_CLASSORINTERFACE auth/PinInterface
+					astore 9;
+				L30:	aload 9;
+					invokeinterface 1 21 1;		// auth/PinInterface
+					aload_0;
+					sconst_1;
+					putfield_b 3;		// boolean auth/information.khoitao
+					aload_1;
+					invokevirtual 24;		// setOutgoing()S
+					pop;
+					aload_1;
+					sconst_1;
+					invokevirtual 26;		// setOutgoingLength(S)V
+					aload_1;
+					sconst_1;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					sconst_0;
+					sconst_1;
+					invokevirtual 27;		// sendBytesLong([BSS)V
+				L31:	invokestatic 34;		// javacard/framework/JCSystem.commitTransaction()V
+					goto_w L53;
+				L32:	aload_1;
+					invokevirtual 24;		// setOutgoing()S
+					sstore 8;
+				L33:	aload_0;
+					getstatic_a 55;		// reference auth/information.infoEn
+					invokespecial 59;		// auth/information.decrypt([B)V
+					getstatic_s 52;		// short auth/information.countImage
+					getstatic_s 53;		// short auth/information.countInfo
+					sadd;
+					sconst_1;
+					sadd;
+					sstore 9;
+				L34:	aload_1;
+					sload 9;
+					invokevirtual 26;		// setOutgoingLength(S)V
+					aload_1;
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sconst_0;
+					getstatic_s 53;		// short auth/information.countInfo
+					invokevirtual 27;		// sendBytesLong([BSS)V
+					aload_1;
+					sconst_1;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					sconst_0;
+					sconst_1;
+					invokevirtual 27;		// sendBytesLong([BSS)V
+					getstatic_s 52;		// short auth/information.countImage
+					sstore 5;
+					sconst_0;
+					sstore 10;
+				L35:	sconst_0;
+					sstore 11;
+				L36:	sload 5;
+					sspush 256;
+					if_scmple L38;
+				L37:	getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					getstatic_a 45;		// reference auth/information.buffer
+					invokespecial 59;		// auth/information.decrypt([B)V
+					aload_1;
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sconst_0;
+					sspush 128;
+					invokevirtual 27;		// sendBytesLong([BSS)V
+					aload_1;
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sspush 128;
+					sspush 128;
+					invokevirtual 27;		// sendBytesLong([BSS)V
+					sload 5;
+					sspush 256;
+					ssub;
+					sstore 5;
+					goto L36;
+				L38:	getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					getstatic_a 45;		// reference auth/information.buffer
+					invokespecial 59;		// auth/information.decrypt([B)V
+					aload_1;
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sconst_0;
+					sload 5;
+					invokevirtual 27;		// sendBytesLong([BSS)V
+					goto_w L53;
+				L39:	sconst_0;
+					sstore 5;
+					sconst_0;
+					sstore 6;
+					invokestatic 33;		// javacard/framework/JCSystem.beginTransaction()V
+					sload 7;
+					sstore 12;
+				L40:	sload 12;
+					sload 7;
+					sload_3;
+					sadd;
+					if_scmpge L45;
+				L41:	aload_2;
+					sload 12;
+					baload;
+					sconst_1;
+					if_scmpne L44;
+				L42:	sload 6;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 6;
+					sload 6;
+					bspush 7;
+					if_scmpne L44;
+				L43:	goto L45;
+				L44:	sinc 12 1;
+					goto L40;
+				L45:	sload 12;
+					sload 7;
+					ssub;
+					putstatic_s 53;		// short auth/information.countInfo
+					aload_2;
+					sload 7;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					getstatic_s 53;		// short auth/information.countInfo
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					getstatic_s 53;		// short auth/information.countInfo
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 55;		// reference auth/information.infoEn
+					sconst_0;
+					sspush 256;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					invokestatic 34;		// javacard/framework/JCSystem.commitTransaction()V
+					goto_w L53;
+				L46:	sconst_0;
+					sstore 6;
+					invokestatic 33;		// javacard/framework/JCSystem.beginTransaction()V
+					sload 4;
+					putstatic_s 52;		// short auth/information.countImage
+					sconst_0;
+					sstore 5;
+					sload 4;
+					newarray 11;
+					putstatic_a 56;		// reference auth/information.bufferImg
+				L47:	sload_3;
+					ifle L49;
+				L48:	aload_2;
+					sload 7;
+					getstatic_a 56;		// reference auth/information.bufferImg
+					sload 5;
+					sload_3;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload 5;
+					sload_3;
+					sadd;
+					sstore 5;
+					aload_1;
+					sload 7;
+					invokevirtual 57;		// receiveBytes(S)S
+					sstore_3;
+					goto L47;
+				L49:	sload 5;
+					sspush 256;
+					if_scmple L51;
+				L50:	getstatic_a 56;		// reference auth/information.bufferImg
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sspush 256;
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload 5;
+					sspush 256;
+					ssub;
+					sstore 5;
+					goto L49;
+				L51:	getstatic_a 56;		// reference auth/information.bufferImg
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sload 5;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sload 5;
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload 5;
+					ssub;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					invokestatic 34;		// javacard/framework/JCSystem.commitTransaction()V
+					goto L53;
+				L52:	aload_1;
+					invokevirtual 24;		// setOutgoing()S
+					pop;
+					aload_1;
+					bspush 10;
+					invokevirtual 26;		// setOutgoingLength(S)V
+					aload_1;
+					bspush 10;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 10;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 10;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 10;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 10;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 10;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 10;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 10;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 10;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 10;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 10;
+					bastore;
+					sconst_0;
+					bspush 10;
+					invokevirtual 27;		// sendBytesLong([BSS)V
+				L53:	return;
+		}
+
+		.method private encrypt(S)V {
+			.stack 6;
+			.locals 1;
+
+				L0:	getfield_a_this 5;		// reference auth/information.aesCipher
+					getfield_a_this 6;		// reference auth/information.aesKey
+					sconst_2;
+					invokevirtual 36;		// init(Ljavacard/security/Key;B)V
+					sspush 256;
+					newarray 11;
+					astore_2;
+				L1:	getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					aload_2;
+					sconst_0;
+					sload_1;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 5;		// reference auth/information.aesCipher
+					aload_2;
+					sconst_0;
+					sspush 256;
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					invokevirtual 37;		// doFinal([BSS[BS)S
+					pop;
+					return;
+		}
+
+		.method private decrypt([B)V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 5;		// reference auth/information.aesCipher
+					getfield_a_this 6;		// reference auth/information.aesKey
+					sconst_1;
+					invokevirtual 36;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 5;		// reference auth/information.aesCipher
+					aload_1;
+					sconst_0;
+					sspush 256;
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sconst_0;
+					invokevirtual 37;		// doFinal([BSS[BS)S
+					pop;
+					return;
+		}
+
+		.method public changeInfoEncode([B[B)V 8 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					getstatic_a 55;		// reference auth/information.infoEn
+					invokespecial 59;		// auth/information.decrypt([B)V
+					getfield_a_this 6;		// reference auth/information.aesKey
+					aload_2;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sconst_0;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sspush 256;
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getfield_a_this 6;		// reference auth/information.aesKey
+					aload_1;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 55;		// reference auth/information.infoEn
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getstatic_s 52;		// short auth/information.countImage
+					sstore_3;
+				L1:	sload_3;
+					sspush 256;
+					if_scmple L3;
+				L2:	getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload_3;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					getstatic_a 45;		// reference auth/information.buffer
+					invokespecial 59;		// auth/information.decrypt([B)V
+					getfield_a_this 6;		// reference auth/information.aesKey
+					aload_2;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sconst_0;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sspush 256;
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getfield_a_this 6;		// reference auth/information.aesKey
+					aload_1;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload_3;
+					ssub;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					sload_3;
+					sspush 256;
+					ssub;
+					sstore_3;
+					goto L1;
+				L3:	getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload_3;
+					ssub;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					getstatic_a 45;		// reference auth/information.buffer
+					invokespecial 59;		// auth/information.decrypt([B)V
+					getfield_a_this 6;		// reference auth/information.aesKey
+					aload_2;
+					sconst_0;
+					invokeinterface 3 75 4;		// javacard/security/AESKey
+					getstatic_a 47;		// reference auth/information.dataDecrypted
+					sconst_0;
+					getstatic_a 45;		// reference auth/information.buffer
+					sconst_0;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					sspush 256;
+					invokespecial 54;		// auth/information.encrypt(S)V
+					getstatic_a 46;		// reference auth/information.bufferEn
+					sconst_0;
+					getstatic_a 58;		// reference auth/information.avatarEn
+					getstatic_s 52;		// short auth/information.countImage
+					sload_3;
+					ssub;
+					sspush 256;
+					invokestatic 38;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					return;
+		}
+
+	}
+
+	.class public pin 9 extends 1.3 {		// extends javacard/framework/Applet
+
+		.shareable;
+
+		.fields {
+			private byte[] keyAES 0;		// [B
+			private 4.11 mDig 1;		// Ljavacard/security/MessageDigest;
+			private 4.8 rsaPrivKey 2;		// Ljavacard/security/RSAPrivateKey;
+			private 4.9 rsaPubKey 3;		// Ljavacard/security/RSAPublicKey;
+			private 4.15 rsaSig 4;		// Ljavacard/security/Signature;
+			private byte[] sig_buffer 5;		// [B
+			private final byte[] infoAID 6;		// [B
+			private final byte[] marketAID 7;		// [B
+			private short sigLen 8;		// S
+			private static 1.9 pin;		// Ljavacard/framework/OwnerPIN;
+		}
+
+		.publicMethodTable 4 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+			initChuky()V;
+			getHashPin()[B;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 1.2 { 		// javacard/framework/Shareable
+			}
+
+			.interface PinInterface { 
+				9;		// getHashPin()[B
+				8;		// initChuky()V
+			}
+
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 60;		// auth/pin
+					dup;
+					aload_0;
+					sload_1;
+					sload_2;
+					invokespecial 61;		// auth/pin.<init>([BSB)V
+					pop;
+					return;
+		}
+
+		.method private <init>([BSB)V {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 41;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 17;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 34;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 51;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 68;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 85;
+					bastore;
+					dup;
+					sconst_5;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 6;
+					sconst_1;
+					bastore;
+					putfield_a 7;		// reference auth/pin.infoAID
+					aload_0;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 17;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 34;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 51;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 68;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 85;
+					bastore;
+					dup;
+					sconst_5;
+					bspush -120;
+					bastore;
+					dup;
+					bspush 6;
+					sconst_2;
+					bastore;
+					putfield_a 8;		// reference auth/pin.marketAID
+					aload_0;
+					sconst_2;
+					sconst_1;
+					invokestatic 64;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					putfield_a 9;		// reference auth/pin.mDig
+					aload_1;
+					sload_2;
+					baload;
+					sstore 4;
+				L1:	sload 4;
+					ifne L3;
+				L2:	aload_0;
+					invokevirtual 66;		// register()V
+					goto L4;
+				L3:	aload_0;
+					aload_1;
+					sload_2;
+					sconst_1;
+					sadd;
+					sload 4;
+					invokevirtual 67;		// register([BSB)V
+				L4:	new 68;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_5;
+					bspush 6;
+					invokespecial 69;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putstatic_a 70;		// reference auth/pin.pin
+					getstatic_a 70;		// reference auth/pin.pin
+					getstatic_a 71;		// reference auth/AUTH_CONSTANTS.DEAULT_PIN_CODE
+					sconst_0;
+					getstatic_a 71;		// reference auth/AUTH_CONSTANTS.DEAULT_PIN_CODE
+					arraylength;
+					s2b;
+					invokevirtual 72;		// update([BSB)V
+					aload_0;
+					aload_0;
+					getstatic_a 71;		// reference auth/AUTH_CONSTANTS.DEAULT_PIN_CODE
+					invokespecial 73;		// auth/pin.hashMD5Message([B)[B
+					putfield_a 10;		// reference auth/pin.keyAES
+					return;
+		}
+
+		.method public initChuky()V 8 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_0;
+					sspush 128;
+					putfield_s 11;		// short auth/pin.sigLen
+					aload_0;
+					getfield_s_this 11;		// short auth/pin.sigLen
+					newarray 11;
+					putfield_a 12;		// reference auth/pin.sig_buffer
+					aload_0;
+					bspush 10;
+					sconst_0;
+					invokestatic 77;		// javacard/security/Signature.getInstance(BZ)Ljavacard/security/Signature;
+					putfield_a 13;		// reference auth/pin.rsaSig
+					aload_0;
+					sconst_5;
+					bspush 8;
+					getfield_s_this 11;		// short auth/pin.sigLen
+					smul;
+					sconst_0;
+					invokestatic 74;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 79;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					putfield_a 14;		// reference auth/pin.rsaPrivKey
+					aload_0;
+					sconst_4;
+					bspush 8;
+					getfield_s_this 11;		// short auth/pin.sigLen
+					smul;
+					sconst_0;
+					invokestatic 74;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 81;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putfield_a 15;		// reference auth/pin.rsaPubKey
+					new 83;		// javacard/security/KeyPair
+					dup;
+					sconst_1;
+					bspush 8;
+					getfield_s_this 11;		// short auth/pin.sigLen
+					smul;
+					invokespecial 84;		// javacard/security/KeyPair.<init>(BS)V
+					astore_1;
+				L1:	aload_1;
+					invokevirtual 85;		// genKeyPair()V
+					aload_0;
+					aload_1;
+					invokevirtual 86;		// getPrivate()Ljavacard/security/PrivateKey;
+					checkcast 0 79;		// T_CLASSORINTERFACE javacard/security/RSAPrivateKey
+					putfield_a 14;		// reference auth/pin.rsaPrivKey
+					aload_0;
+					aload_1;
+					invokevirtual 87;		// getPublic()Ljavacard/security/PublicKey;
+					checkcast 0 81;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putfield_a 15;		// reference auth/pin.rsaPubKey
+					return;
+		}
+
+		.method private exportPublicModulus(Ljavacard/framework/APDU;)V {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 15;		// reference auth/pin.rsaPubKey
+					aload_2;
+					sconst_0;
+					invokeinterface 3 81 5;		// javacard/security/RSAPublicKey
+					sstore_3;
+				L2:	aload_1;
+					sconst_0;
+					sload_3;
+					invokevirtual 88;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private exportPublicExponent(Ljavacard/framework/APDU;)V {
+			.stack 3;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 15;		// reference auth/pin.rsaPubKey
+					aload_2;
+					sconst_0;
+					invokeinterface 3 81 4;		// javacard/security/RSAPublicKey
+					sstore_3;
+				L2:	aload_1;
+					sconst_0;
+					sload_3;
+					invokevirtual 88;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method private signData(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 13;		// reference auth/pin.rsaSig
+					getfield_a_this 14;		// reference auth/pin.rsaPrivKey
+					sconst_1;
+					invokevirtual 89;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 13;		// reference auth/pin.rsaSig
+					aload_2;
+					sconst_5;
+					bspush 20;
+					getfield_a_this 12;		// reference auth/pin.sig_buffer
+					sconst_0;
+					invokevirtual 90;		// sign([BSS[BS)S
+					pop;
+					aload_1;
+					invokevirtual 24;		// setOutgoing()S
+					pop;
+					aload_1;
+					getfield_s_this 11;		// short auth/pin.sigLen
+					invokevirtual 26;		// setOutgoingLength(S)V
+					aload_1;
+					getfield_a_this 12;		// reference auth/pin.sig_buffer
+					sconst_0;
+					getfield_s_this 11;		// short auth/pin.sigLen
+					invokevirtual 27;		// sendBytesLong([BSS)V
+					return;
+		}
+
+		.method public select()Z 6 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sconst_1;
+					sreturn;
+		}
+
+		.method public deselect()V 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 70;		// reference auth/pin.pin
+					invokevirtual 91;		// reset()V
+					return;
+		}
+
+		.method public getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable; 5 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+
+				L0:	sload_2;
+					bspush 18;
+					if_scmpeq L2;
+				L1:	aconst_null;
+					areturn;
+				L2:	aload_0;
+					areturn;
+		}
+
+		.method public getHashPin()[B 9 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 10;		// reference auth/pin.keyAES
+					areturn;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_0;
+					invokevirtual 92;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_0;
+					baload;
+					ifne L6;
+				L4:	aload_2;
+					sconst_1;
+					baload;
+					bspush -92;
+					if_scmpne L6;
+				L5:	return;
+				L6:	aload_2;
+					sconst_0;
+					baload;
+					bspush -80;
+					if_scmpeq L8;
+				L7:	sspush 28160;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	aload_2;
+					sconst_1;
+					baload;
+					stableswitch L15 17 32 L9 L15 L15 L15 L11 L10 L15 L12 L13 L15 L15 L15 L15 L15 L15 L14;
+				L9:	aload_0;
+					aload_1;
+					invokespecial 93;		// auth/pin.updatePIN(Ljavacard/framework/APDU;)V
+					return;
+				L10:	aload_0;
+					aload_1;
+					invokespecial 94;		// auth/pin.verify(Ljavacard/framework/APDU;)V
+					return;
+				L11:	aload_0;
+					invokespecial 95;		// auth/pin.unblock()V
+					return;
+				L12:	aload_0;
+					aload_1;
+					invokespecial 96;		// auth/pin.exportPublicModulus(Ljavacard/framework/APDU;)V
+					goto L16;
+				L13:	aload_0;
+					aload_1;
+					invokespecial 97;		// auth/pin.exportPublicExponent(Ljavacard/framework/APDU;)V
+					goto L16;
+				L14:	aload_0;
+					aload_1;
+					invokespecial 98;		// auth/pin.signData(Ljavacard/framework/APDU;)V
+					goto L16;
+				L15:	sspush 27904;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L16:	return;
+		}
+
+		.method private updatePIN(Ljavacard/framework/APDU;)V {
+			.stack 5;
+			.locals 8;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 31;		// setIncomingAndReceive()S
+					s2b;
+					sstore_2;
+				L1:	sconst_0;
+					sstore_3;
+				L2:	sload_2;
+					bspush 12;
+					if_scmpeq L4;
+				L3:	sspush 26131;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore 4;
+				L5:	getstatic_a 70;		// reference auth/pin.pin
+					aload 4;
+					sconst_5;
+					bspush 6;
+					invokevirtual 99;		// check([BSB)Z
+					ifne L7;
+				L6:	sspush 26129;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	bspush 6;
+					newarray 11;
+					astore 5;
+				L8:	aload 4;
+					bspush 11;
+					aload 5;
+					sconst_0;
+					bspush 6;
+					invokestatic 17;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					invokestatic 33;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_0;
+					aload 5;
+					invokespecial 73;		// auth/pin.hashMD5Message([B)[B
+					astore 6;
+				L9:	getfield_a_this 7;		// reference auth/pin.infoAID
+					sconst_0;
+					getfield_a_this 7;		// reference auth/pin.infoAID
+					arraylength;
+					s2b;
+					invokestatic 19;		// javacard/framework/JCSystem.lookupAID([BSB)Ljavacard/framework/AID;
+					astore 7;
+				L10:	aload 7;
+					bspush 17;
+					invokestatic 20;		// javacard/framework/JCSystem.getAppletShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+					checkcast 0 100;		// T_CLASSORINTERFACE auth/InfoInterface
+					checkcast 0 100;		// T_CLASSORINTERFACE auth/InfoInterface
+					astore 8;
+				L11:	aload 8;
+					getfield_a_this 10;		// reference auth/pin.keyAES
+					aload 6;
+					invokeinterface 3 100 0;		// auth/InfoInterface
+					getfield_a_this 8;		// reference auth/pin.marketAID
+					sconst_0;
+					getfield_a_this 8;		// reference auth/pin.marketAID
+					arraylength;
+					s2b;
+					invokestatic 19;		// javacard/framework/JCSystem.lookupAID([BSB)Ljavacard/framework/AID;
+					astore 7;
+					aload 7;
+					bspush 17;
+					invokestatic 20;		// javacard/framework/JCSystem.getAppletShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+					checkcast 0 101;		// T_CLASSORINTERFACE auth/CinemaInterface
+					checkcast 0 101;		// T_CLASSORINTERFACE auth/CinemaInterface
+					astore 9;
+				L12:	aload 9;
+					aload 6;
+					invokeinterface 2 101 0;		// auth/CinemaInterface
+					aload_0;
+					aload 6;
+					putfield_a 10;		// reference auth/pin.keyAES
+					getstatic_a 70;		// reference auth/pin.pin
+					aload 5;
+					sconst_0;
+					aload 5;
+					arraylength;
+					s2b;
+					invokevirtual 72;		// update([BSB)V
+					invokestatic 34;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method private verify(Ljavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_1;
+					invokevirtual 23;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokevirtual 31;		// setIncomingAndReceive()S
+					s2b;
+					sstore_3;
+				L2:	sload_3;
+					bspush 6;
+					if_scmpeq L4;
+				L3:	sspush 26131;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	getstatic_a 70;		// reference auth/pin.pin
+					aload_2;
+					sconst_5;
+					sload_3;
+					invokevirtual 99;		// check([BSB)Z
+					ifne L8;
+				L5:	getstatic_a 70;		// reference auth/pin.pin
+					invokevirtual 102;		// getTriesRemaining()B
+					ifne L7;
+				L6:	sspush 26132;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	sspush 26129;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	return;
+		}
+
+		.method private checkValidatePIN()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 70;		// reference auth/pin.pin
+					invokevirtual 103;		// isValidated()Z
+					ifne L4;
+				L1:	getstatic_a 70;		// reference auth/pin.pin
+					invokevirtual 102;		// getTriesRemaining()B
+					ifne L3;
+				L2:	sspush 26132;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	sspush 25362;
+					invokestatic 30;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	return;
+		}
+
+		.method private unblock()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 70;		// reference auth/pin.pin
+					invokevirtual 104;		// resetAndUnblock()V
+					return;
+		}
+
+		.method private hashMD5Message([B)[B {
+			.stack 6;
+			.locals 1;
+
+				L0:	bspush 16;
+					newarray 11;
+					astore_2;
+				L1:	getfield_a_this 9;		// reference auth/pin.mDig
+					invokevirtual 105;		// reset()V
+					getfield_a_this 9;		// reference auth/pin.mDig
+					aload_1;
+					sconst_0;
+					aload_1;
+					arraylength;
+					aload_2;
+					sconst_0;
+					invokevirtual 106;		// doFinal([BSS[BS)S
+					pop;
+					aload_2;
+					areturn;
+		}
+
+	}
+
+}

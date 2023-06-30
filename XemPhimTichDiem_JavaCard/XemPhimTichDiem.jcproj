@@ -1,0 +1,17 @@
+<JavaCardProject name="XemPhimTichDiem">
+<USER>
+<PKG name="auth" aid="11 22 33 44 55 88 00 00" major="1" minor="0">
+<APPLET aid="11 22 33 44 55 88 00" instanceaid="" parameter="" authority="" privileges="" index="-26992" name="pin"/>
+<CLASS name="AUTH_CONSTANTS"/>
+<CLASS name="PinInterface"/>
+<APPLET aid="11 22 33 44 55 88 01" instanceaid="" parameter="" authority="" privileges="" index="-18264" name="information"/>
+<CLASS name="InfoInterface"/>
+<CLASS name="INFO_CONSTANTS"/>
+<CLASS name="APPLET_CONSTANTS"/>
+<CLASS name="CINEMA_CONSTANTS"/>
+<CLASS name="CinemaInterface"/>
+<APPLET aid="11 22 33 44 55 88 02" instanceaid="" parameter="" authority="" privileges="" index="29064" name="cinema"/>
+</PKG>
+<Libs/>
+</USER>
+</JavaCardProject>
